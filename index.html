@@ -101,6 +101,22 @@
         function checkout() {
             alert('Thank you for your order! Your delicious Italian dishes are on the way.');
         }
+        function searchDish() {
+            var input, filter, menuItems, menuItem, i, txtValue;
+            input = document.getElementById('searchInput');
+            filter = input.value.toUpperCase();
+            menuItems = document.getElementsByClassName('menu-item');
+
+            for (i = 0; i < menuItems.length; i++) {
+                menuItem = menuItems[i];
+                txtValue = menuItem.textContent || menuItem.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    menuItem.style.display = "";
+                } else {
+                    menuItem.style.display = "none";
+                }
+            }
+        }
     </script>
 </head>
 <body>
