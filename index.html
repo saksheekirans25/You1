@@ -99,7 +99,23 @@
     </style>
     <script>
         function checkout() {
-            alert('Thank you for your order! Your delicious Italian dishes are on the way.');
+            // Calculate total and display it
+            var cartItems = document.getElementsByClassName('cart-item');
+            var total = 0;
+            for (var i = 0; i < cartItems.length; i++) {
+                var price = parseFloat(cartItems[i].getAttribute('data-price'));
+                total += price;
+            }
+            alert('Total: $' + total.toFixed(2) + '\n\nThank you for your order! Your delicious Italian dishes are on the way.');
+        }
+
+        function addToCart(itemName, price) {
+            var cart = document.getElementById('cart');
+            var item = document.createElement('div');
+            item.classList.add('cart-item');
+            item.setAttribute('data-price', price);
+            item.textContent = itemName + ' - $' + price.toFixed(2);
+            cart.appendChild(item);
         }
         function searchDish() {
             var input, filter, menuItems, menuItem, i, txtValue;
