@@ -1,91 +1,134 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Fancy Italian Restaurant</title>
+    <title>Bella Cucina: A Taste of Italy</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
-            background: linear-gradient(to right, #ee9ca7, #ffdde1);
             color: #333;
+            background: linear-gradient(to right, #ff9a9e, #fad0c4);
+            padding-top: 50px; /* Push the content below the header */
         }
-        .container {
-            width: 80%;
-            margin: 0 auto;
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            z-index: 1000; /* Ensure the header is on top of other content */
         }
-        #searchBar {
-            margin: 20px 0;
+
+        .header-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 10px;
         }
-        .product {
+
+        header h1 {
+            font-size: 24px;
+            margin: 5px 0;
+        }
+
+        header p {
+            font-size: 14px;
+            color: #888;
+            margin: 5px 0;
+        }
+
+        input[type="text"] {
+            width: 200px;
+            padding: 8px;
+            margin-top: 10px;
             border: 1px solid #ccc;
-            margin: 20px;
-            padding: 20px;
             border-radius: 5px;
         }
-        .product img {
-            width: 100%;
+
+        main {
+            margin: 80px 20px 20px 20px; /* Adjust margin to accommodate the fixed header */
         }
-        .product button {
-            background-color: #333;
-            color: #fff;
-            border: none;
+
+        section {
+            margin-bottom: 20px;
+        }
+
+        .menu-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .menu-item {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            width: 200px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .cart {
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background: #fff;
+        }
+
+        button {
             padding: 10px 20px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
+            border: none;
+            border-radius: 5px;
+            background-color: #4CAF50;
+            color: white;
             font-size: 16px;
-            margin: 4px 2px;
             cursor: pointer;
         }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <h1>Fancy Italian Restaurant</h1>
-        <p>Experience the taste of Italy!</p>
-        <input type="text" id="searchBar" placeholder="Search for dishes...">
-        <div id="productContainer">
-            <!-- Products will be added here -->
-        </div>
-    </div>
-    <script>
-        var products = [
-            {id: 1, name: 'Pizza Margherita', price: 10, image: 'pizza.jpg'},
-            {id: 2, name: 'Pasta Carbonara', price: 12, image: 'pasta.jpg'},
-            // Add more products as needed
-        ];
-        var cart = [];
 
-        window.onload = function() {
-            var productContainer = document.getElementById('productContainer');
-            for(var i = 0; i < products.length; i++) {
-                var product = products[i];
-                var productElement = document.createElement('div');
-                productElement.className = 'product';
-                productElement.innerHTML = 
-                    '<img src="' + product.image + '">' +
-                    '<h2>' + product.name + '</h2>' +
-                    '<p>$' + product.price + '</p>' +
-                    '<button onclick="addToCart(' + product.id + ')">Add to Cart</button>';
-                productContainer.appendChild(productElement);
-            }
-        };
-
-        function addToCart(productId) {
-            var product = products.find(function(product) {
-                return product.id === productId;
-            });
-            cart.push(product);
-            alert(product.name + ' added to cart!');
+        footer {
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: #fff;
+            padding: 10px;
+            box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
         }
-
+    </style>
+    <script>
         function checkout() {
-            var total = 0;
-            for(var i = 0; i < cart.length; i++) {
-                total += cart[i].price;
-            }
-            alert('Total: $' + total);
-            cart = []; // Empty the cart
+            // Add checkout functionality here
         }
     </script>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>Bella Cucina</h1>
+            <p>A Taste of Italy</p>
+            <input type="text" placeholder="Search for Your Favorite Dish">
+        </div>
+    </header>
+    <main>
+        <section>
+            <h2>Specialties</h2>
+            <div class="menu-items">
+                <!-- Recipe cards go here -->
+            </div>
+        </section>
+        <section>
+            <h2>Add to Cart & Checkout</h2>
+            <div class="cart">
+                <!-- Cart items go here -->
+                <button onclick="checkout()">Proceed to Checkout</button>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>Bella Cucina</p>
+        <p>123 Main Street, City, State, Zip Code</p>
+        <p>Phone: 123-456-7890</p>
+    </footer>
 </body>
 </html>
